@@ -1,0 +1,22 @@
+{
+  "name": "phaser-runtime",
+  "version": "1.0.6",
+  "description": "Run Phaser games on desktop",
+  "main": "main.js",
+  "bin": {
+    "phaser": "run.js"
+  },
+  "repository": "https://github.com/samuelnovaes/phaser-runtime.git",
+  "keywords": [
+    "Phaser",
+    "game",
+    "electron",
+    "desktop",
+    "play"
+  ],
+  "author": "Samuel Novaes",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^1.4.1"
+  }
+}

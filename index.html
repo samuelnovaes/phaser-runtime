@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Phaser Runtime</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            overflow: hidden;
+        }
+        #game{
+            position: absolute;
+            top: 50vh;
+            left: 50vw;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div id="game"></div>
+    <script type="text/javascript" src="phaser.min.js"></script>
+    <script type="text/javascript">
+
+        const remote = require('electron').remote;
+        let browser = remote.getCurrentWindow();
+
+        window.onkeyup = (e)=>{
+            if(e.key == "F12"){
+                browser.openDevTools();
+            }
+        }
+
+        function Game(width, height, renderer, state, transparent, antialias, physicsConfig){
+            browser.setSize(width, height);
+            browser.center();
+            let game = new Phaser.Game(width, height, renderer, "game", state, transparent, antialias, physicsConfig);
+            return game;
+        }
+
+        try{
+            require(process.cwd()+"/"+remote.process.argv[2]+"/index.js");
+            browser.show();
+        }
+        catch(err){
+            console.error(err);
+            browser.close();
+        }
+
+    </script>
+</body>
+</html>
