@@ -41,7 +41,7 @@ browser.center(); //Center the window on scree
 
 You can import scripts or modules using the ```require``` function
 
-```javacript
+```javascript
 require("foo.js");
 var fs = require("fs");
 ```
