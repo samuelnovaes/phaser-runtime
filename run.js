@@ -3,7 +3,7 @@ const cp = require("child_process");
 const path = require('path');
 const fs = require('fs');
 
-const caminho = process.cwd()+"/"+process.argv[2]+"/index.js";
+const caminho = path.join(process.cwd(), process.argv[2], "/index.js");
 
 if(!process.argv[2]){
 	console.log("Usage: phaser path/to/game");
