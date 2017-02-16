@@ -46,7 +46,7 @@ require("foo.js");
 var fs = require("fs");
 ```
 
-# Game exemple
+# Game example
 
 ### Game directory
 
