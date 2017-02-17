@@ -30,9 +30,9 @@ The ```browser``` object refers to the current Electron BrowserWindow object. It
 
 ```javascript
 browser.setTitle("Foo"); //Set the window title
-browser.serSize(640, 480); //Resize the window
-browser.serResizable(true); //Set the window resizable
-browser.serMaximizable(true); //Set the window maximizable
+browser.setSize(640, 480); //Resize the window
+browser.setResizable(true); //Set the window resizable
+browser.setMaximizable(true); //Set the window maximizable
 browser.center(); //Center the window on scree
 ```
 [See all methods here](http://electron.atom.io/docs/api/browser-window/)
