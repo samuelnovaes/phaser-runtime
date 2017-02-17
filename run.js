@@ -13,7 +13,7 @@ else if(!fs.existsSync(caminho)){
 }
 else {
 	process.env.ELECTRON_ENABLE_LOGGING = true;
-	const processo = cp.spawn(path.join(__dirname, "node_modules", ".bin", "electron"), [__dirname, process.argv[2]]);
+	const processo = cp.spawn(path.join(__dirname, "node_modules", ".bin", /^win/.test(process.platform) ? "electron.cmd" : "electron"), [__dirname, process.argv[2]]);
 	processo.stdout.on('data', (data) => {
 		console.log(data.toString("utf-8"));
 	});
