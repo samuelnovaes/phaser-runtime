@@ -25,6 +25,7 @@
     <script type="text/javascript">
 
         const remote = require('electron').remote;
+        const path = require('path');
         let browser = remote.getCurrentWindow();
 
         window.onkeyup = (e)=>{
@@ -41,7 +42,7 @@
         }
 
         try{
-            require(process.cwd()+"/"+remote.process.argv[2]+"/index.js");
+            require(path.join(process.cwd(), remote.process.argv[2], "index.js"));
             browser.show();
         }
         catch(err){
