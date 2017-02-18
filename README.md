@@ -1,5 +1,6 @@
 # phaser-runtime
 Phaser runtime is an application to run Phaser.js games on desktop. Phase runtime works with Electron.
+[![NPM](https://nodei.co/npm/jxserver.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/jxserver/)
 
 # How to install
 ```bash
