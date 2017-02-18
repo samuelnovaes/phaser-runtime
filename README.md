@@ -81,7 +81,7 @@ function render () {
 ```
 
 ### Running the game
-To run the game, enter ```phaser .``` inside the "myGame" directory.
+To run the game, enter ```phaser myGame``` inside the "myGame" parent directory.
 
 And you will see it
 ![Image of Yaktocat](https://lh3.googleusercontent.com/u/0/d/0B4u0L5wy_IY8Q1NDd204NVVHUVE=s1600-k-iv1)
