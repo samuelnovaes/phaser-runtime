@@ -2,27 +2,28 @@
 const cp = require("child_process");
 const path = require('path');
 const fs = require('fs');
-
-const caminho = path.join(process.cwd(), process.argv[2], "index.js");
-
 if(!process.argv[2]){
-	console.log("Usage: phaser path/to/game");
+	run(process.cwd());
 }
-else if(!fs.existsSync(caminho)){
-	console.log("Cannot find module "+caminho);
+else if(path.isAbsolute(process.argv[2])){
+	run(process.argv[2]);
 }
-else {
-	process.env.ELECTRON_ENABLE_LOGGING = true;
-	const processo = cp.spawn(path.join(__dirname, "node_modules", ".bin", /^win/.test(process.platform) ? "electron.cmd" : "electron"), [__dirname, process.argv[2]]);
-	processo.stdout.on('data', (data) => {
-		console.log(data.toString("utf-8"));
-	});
-
-	processo.stderr.on('data', (data) => {
-		console.log(data.toString("utf-8"));
-	});
-
-	processo.on('close', (code) => {
-		console.log(`child process exited with code ${code}`);
-	});
+else{
+	run(path.join(process.cwd(), process.argv[2]));
+}
+function run(dir){
+	let file = path.join(dir, "index.js");
+	if(!fs.existsSync(file)){
+		console.error(`Cannot find module ${file}`);
+	}
+	else{
+		process.env.ELECTRON_ENABLE_LOGGING = true;
+		const processo = cp.spawn(path.join(__dirname, "node_modules", ".bin", /^win/.test(process.platform) ? "electron.cmd" : "electron"), [__dirname, dir]);
+		processo.stdout.on('data', (data) => {
+			console.log(data.toString("utf-8"));
+		});
+		processo.stderr.on('data', (data) => {
+			console.error(data.toString("utf-8"));
+		});
+	}
 }

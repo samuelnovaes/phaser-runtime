@@ -24,9 +24,10 @@
     <script type="text/javascript" src="phaser.min.js"></script>
     <script type="text/javascript">
 
-        const remote = require('electron').remote;
-        const path = require('path');
-        let browser = remote.getCurrentWindow();
+        const _r = require('electron').remote;
+        const _p = require('path');
+        let browser = _r.getCurrentWindow();
+        process.chdir(_r.process.argv[2]);
 
         window.onkeyup = (e)=>{
             if(e.key == "F12"){
@@ -42,7 +43,7 @@
         }
 
         try{
-            require(path.join(process.cwd(), remote.process.argv[2], "index.js"));
+            require(_p.join(_r.process.argv[2], "index.js"));
             browser.show();
         }
         catch(err){
