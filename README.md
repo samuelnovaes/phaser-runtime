@@ -14,7 +14,7 @@ cd path/to/game
 phaser
 ```
 # Game structure
-The project must be a directory that contains a main script called ```index.js``` with Phaser code and a ```config.js``` file with the electron BrowserWindow configuration.
+The project must be a directory that contains a main script called ```index.js``` with Phaser code and a ```config.json``` file with the electron BrowserWindow configuration.
 
 # Get started
 
@@ -42,16 +42,16 @@ var fs = require("fs");
 
 ```
 myGame
-└---config.js
+└---config.json
 └---index.js
 ```
-### myGame/config.js
+### myGame/config.json
 
-```javascript
-module.exports = {
-	width: 800,
-	height: 600,
-	title: "My Game"
+```json
+{
+	"width": 800,
+	"height": 600,
+	"title": "My Game"
 }
 ```
 
