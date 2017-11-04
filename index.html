@@ -27,12 +27,16 @@
 	const _p = require('path')
 
 	var browser = _r.getCurrentWindow()
-
 	process.chdir(_r.process.argv[2])
 
 	window.onkeyup = (e)=>{
-		if(e.key == "F12"){
+		switch(e.key){
+			case "F12":
 			browser.openDevTools()
+			break
+			case "F5":
+			location.reload()
+			break
 		}
 	}
 
