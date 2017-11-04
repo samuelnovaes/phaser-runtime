@@ -14,7 +14,7 @@ cd path/to/game
 phaser
 ```
 # Game structure
-The project must be a directory that contains a main script called ```index.js``` with Phaser code and a ```config.json``` file with the electron BrowserWindow configuration.
+The project must be a directory that contains ```package.json``` file that with a main script file attribute and a window configuration according to Electron [BrowserWindow](https://electron.atom.io/docs/api/browser-window/) documentation.
 
 # Get started
 
@@ -30,7 +30,7 @@ var game = Game(Phaser.CANVAS, {create: create});
 
 ### importing modules
 
-You can import modules using the ```require``` function
+You can import modules using the ```require``` function.
 
 ```javascript
 var fs = require("fs");
@@ -42,16 +42,24 @@ var fs = require("fs");
 
 ```
 myGame
-└---config.json
+└---package.json
 └---index.js
 ```
-### myGame/config.json
+### myGame/package.json
+> You can generate a ```package.json``` with ```npm init``` command
 
 ```json
 {
-	"width": 800,
-	"height": 600,
-	"title": "My Game"
+	"name": "demo",
+	"version": "1.0.0",
+	"description": "Phaser Runtime Demo",
+	"main": "index.js",
+	"license": "ISC",
+	"window": {
+		"width": 800,
+		"height": 600,
+		"title": "My Game"
+	}
 }
 ```
 

@@ -3,6 +3,7 @@ let path = require('path')
 let url = require('url')
 let config = JSON.parse(process.argv[3])
 
+if(config)
 config.backgroundColor = config.backgroundColor || '#000000'
 
 function createWindow () {
