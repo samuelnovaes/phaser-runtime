@@ -3,6 +3,7 @@ let cp = require("child_process")
 let path = require('path')
 let fs = require('fs')
 let configFile = path.join(process.cwd(), "package.json")
+let file = path.join(process.cwd(), "index.js")
 
 fs.readFile(configFile, 'utf-8', (err, pkg) => {
 	if (err) {
@@ -15,7 +16,7 @@ fs.readFile(configFile, 'utf-8', (err, pkg) => {
 	}
 
 	let config = JSON.parse(pkg)
-	let file = path.join(process.cwd(), config.main)
+	config.window = config.window || {}
 
 	fs.open(file, 'r', (err, fd) => {
 		if (err) {

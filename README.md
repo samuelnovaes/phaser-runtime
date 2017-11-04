@@ -14,7 +14,7 @@ cd path/to/game
 phaser
 ```
 # Game structure
-The project must be a directory that contains ```package.json``` file that with a main script file attribute and a window configuration according to Electron [BrowserWindow](https://electron.atom.io/docs/api/browser-window/) documentation.
+The project must be a directory that contains an ```index.js``` file with Phaser code and a ```package.json``` file with the window configuration according to the Electron [BrowserWindow](https://electron.atom.io/docs/api/browser-window/) documentation.
 
 # Get started
 
@@ -53,7 +53,6 @@ myGame
 	"name": "demo",
 	"version": "1.0.0",
 	"description": "Phaser Runtime Demo",
-	"main": "index.js",
 	"license": "ISC",
 	"window": {
 		"width": 800,
