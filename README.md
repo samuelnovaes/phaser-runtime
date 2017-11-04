@@ -10,14 +10,9 @@ Phaser runtime is an application to run Phaser.js games on desktop. Phase runtim
 
 # Usage
 ```bash
-phaser path/to/game
-```
-or just
-```bash
+cd path/to/game
 phaser
 ```
-inside the game directory
-
 # Game structure
 The project must be a directory that contains a main script called index.js with Phaser code.
 

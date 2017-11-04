@@ -1,56 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Phaser Runtime</title>
-    <style type="text/css">
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        body{
-            overflow: hidden;
-        }
-        #game{
-            position: absolute;
-            top: 50vh;
-            left: 50vw;
-            transform: translate(-50%, -50%);
-        }
-    </style>
+	<meta charset="UTF-8">
+	<title>Phaser Runtime</title>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	body{
+		overflow: hidden;
+	}
+	#game{
+		position: absolute;
+		top: 50vh;
+		left: 50vw;
+		transform: translate(-50%, -50%);
+	}
+	</style>
 </head>
 <body>
-    <div id="game"></div>
-    <script type="text/javascript" src="phaser.min.js"></script>
-    <script type="text/javascript">
+	<div id="game"></div>
+	<script type="text/javascript" src="phaser.min.js"></script>
+	<script type="text/javascript">
 
-        const _r = require('electron').remote;
-        const _p = require('path');
-        let browser = _r.getCurrentWindow();
-        process.chdir(_r.process.argv[2]);
+	const _r = require('electron').remote
+	const _p = require('path')
 
-        window.onkeyup = (e)=>{
-            if(e.key == "F12"){
-                browser.openDevTools();
-            }
-        }
+	var browser = _r.getCurrentWindow()
 
-        function Game(width, height, renderer, state, transparent, antialias, physicsConfig){
-            browser.setSize(width, height);
-            browser.center();
-            let game = new Phaser.Game(width, height, renderer, "game", state, transparent, antialias, physicsConfig);
-            return game;
-        }
+	process.chdir(_r.process.argv[2])
 
-        try{
-            require(_p.join(_r.process.argv[2], "index.js"));
-            browser.show();
-        }
-        catch(err){
-            console.error(err);
-            browser.close();
-        }
+	window.onkeyup = (e)=>{
+		if(e.key == "F12"){
+			browser.openDevTools()
+		}
+	}
 
-    </script>
+	function Game(width, height, renderer, state, transparent, antialias, physicsConfig){
+		browser.setSize(width, height)
+		browser.center()
+		return new Phaser.Game(width, height, renderer, "game", state, transparent, antialias, physicsConfig)
+	}
+
+	try{
+		require(_p.join(_r.process.argv[2], "index.js"))
+		browser.show()
+	}
+	catch(err){
+		console.error(err)
+		browser.close()
+	}
+
+	</script>
 </body>
 </html>
