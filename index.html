@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Phaser Runtime</title>
+	<meta charset="utf-8">
 	<style type="text/css">
+
 	*{
 		margin: 0;
 		padding: 0;
 	}
 	body{
 		overflow: hidden;
+		background-color: #000;
 	}
 	#game{
 		position: absolute;
@@ -17,42 +18,40 @@
 		left: 50vw;
 		transform: translate(-50%, -50%);
 	}
+
 	</style>
 </head>
 <body>
 	<div id="game"></div>
 	<script type="text/javascript" src="phaser.min.js"></script>
 	<script type="text/javascript">
-	const _r = require('electron').remote
-	const _p = require('path')
 
-	var browser = _r.getCurrentWindow()
-	process.chdir(_r.process.argv[2])
+	function Game(renderer, state, transparent, antialias, physicsConfig){
+		return new Phaser.Game(innerWidth, innerHeight, renderer, "game", state, transparent, antialias, physicsConfig)
+	}
 
-	window.onkeyup = (e)=>{
-		switch(e.key){
-			case "F12":
-			browser.openDevTools()
-			break
-			case "F5":
-			location.reload()
-			break
+	(function(){
+
+		let remote = require('electron').remote
+		let path = require('path')
+		let browser = remote.getCurrentWindow()
+
+		process.chdir(remote.process.argv[2])
+
+		window.onkeyup = (e)=>{
+			switch(e.key){
+				case "F12":
+				browser.openDevTools()
+				break
+				case "F5":
+				location.reload()
+				break
+			}
 		}
-	}
 
-	function Game(width, height, renderer, state, transparent, antialias, physicsConfig){
-		browser.setSize(width, height)
-		return new Phaser.Game(width, height, renderer, "game", state, transparent, antialias, physicsConfig)
-	}
+		require(path.join(remote.process.argv[2], "index.js"))
+	})()
 
-	try{
-		require(_p.join(_r.process.argv[2], "index.js"))
-		browser.show()
-	}
-	catch(err){
-		console.error(err)
-		browser.close()
-	}
 	</script>
 </body>
 </html>

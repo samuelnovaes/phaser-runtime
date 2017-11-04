@@ -1,22 +1,20 @@
-const {app, BrowserWindow} = require('electron')
-const path = require('path')
-const url = require('url')
+let {app, BrowserWindow} = require('electron')
+let path = require('path')
+let url = require('url')
+let config = require(path.join(process.cwd(), "config.js"))
 
-let win
+config.backgroundColor = config.backgroundColor || '#000000'
 
 function createWindow () {
-	win = new BrowserWindow({
-		center: true,
-		show: false,
-		resizable: false,
-		backgroundColor: '#000000'
-	})
+	win = new BrowserWindow(config)
 	win.setMenu(null)
+
 	win.loadURL(url.format({
 		pathname: path.join(__dirname, 'index.html'),
 		protocol: 'file:',
 		slashes: true
 	}))
+
 	win.on('closed', function () {
 		win = null
 	})
@@ -24,13 +22,13 @@ function createWindow () {
 
 app.on('ready', createWindow)
 
-app.on('window-all-closed', ()=>{
+app.on('window-all-closed', () => {
 	if (process.platform !== 'darwin') {
 		app.quit()
 	}
 })
 
-app.on('activate', ()=>{
+app.on('activate', () => {
 	if (win === null) {
 		createWindow()
 	}

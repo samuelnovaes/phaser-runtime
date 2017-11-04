@@ -14,38 +14,25 @@ cd path/to/game
 phaser
 ```
 # Game structure
-The project must be a directory that contains a main script called index.js with Phaser code.
+The project must be a directory that contains a main script called ```index.js``` with Phaser code and a ```config.js``` file with the electron BrowserWindow configuration.
 
 # Get started
 
 ### Game function
 
-The ```Game``` function resizes the window and returns a Phaser game object.
+The ```Game``` function returns a Phaser game object.
 
-> Game(width, height, renderer, state, transparent, antialias, physicsConfig);
+> Game(renderer, state, transparent, antialias, physicsConfig);
 
 ```javascript
-var game = Game(800, 600, Phaser.CANVAS, {create: create});
+var game = Game(Phaser.CANVAS, {create: create});
 ```
-### browser object
 
-The ```browser``` object refers to the current Electron BrowserWindow object. It's equivalent to ```require("electron").remote.getCurrentWindow();```
+### importing modules
 
-```javascript
-browser.setTitle("Foo"); //Set the window title
-browser.setSize(640, 480); //Resize the window
-browser.setResizable(true); //Set the window resizable
-browser.setMaximizable(true); //Set the window maximizable
-browser.center(); //Center the window on scree
-```
-[See all methods here](http://electron.atom.io/docs/api/browser-window/)
-
-### importing modules or scripts
-
-You can import scripts or modules using the ```require``` function
+You can import modules using the ```require``` function
 
 ```javascript
-require("foo.js");
 var fs = require("fs");
 ```
 
@@ -55,15 +42,23 @@ var fs = require("fs");
 
 ```
 myGame
+└---config.js
 └---index.js
+```
+### myGame/config.js
+
+```javascript
+module.exports = {
+	width: 800,
+	height: 600,
+	title: "My Game"
+}
 ```
 
 ### myGame/index.js
 
 ```javascript
-browser.setTitle("My Game");
-
-var game = Game(800, 600, Phaser.CANVAS, { create: create, render: render });
+var game = Game(Phaser.CANVAS, { create: create, render: render });
 
 var circle;
 
@@ -86,7 +81,7 @@ function render () {
 To run the game, enter ```phaser``` inside the "myGame" directory.
 
 And you will see it
-![Image of Yaktocat](https://lh3.googleusercontent.com/u/0/d/0B4u0L5wy_IY8Q1NDd204NVVHUVE=s1600-k-iv1)
+![Example image](https://lh3.googleusercontent.com/u/0/d/0B4u0L5wy_IY8Q1NDd204NVVHUVE=s1600-k-iv1)
 
 # Keybindings
 
