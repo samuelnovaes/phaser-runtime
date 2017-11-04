@@ -36,6 +36,13 @@ You can import modules using the ```require``` function.
 var fs = require("fs");
 ```
 
+### loading local assets
+
+You must have to use ```__dirname``` to refers to the game directory
+```javascript
+game.load.image('progress', __dirname+'/img/progress.png');
+```
+
 # Game example
 
 ### Game directory
