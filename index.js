@@ -8,7 +8,8 @@ function createWindow () {
 	win = new BrowserWindow({
 		center: true,
 		show: false,
-		resizable: false
+		resizable: false,
+		backgroundColor: '#000000'
 	})
 	win.setMenu(null)
 	win.loadURL(url.format({

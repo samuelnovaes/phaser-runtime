@@ -1,8 +1,8 @@
 {
 	"name": "phaser-runtime",
-	"version": "1.0.19",
+	"version": "1.0.20",
 	"description": "Run Phaser games on desktop",
-	"main": "main.js",
+	"main": "index.js",
 	"bin": {
 		"phaser": "run.js"
 	},
