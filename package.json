@@ -15,7 +15,7 @@
 		"play"
 	],
 	"author": "Samuel Novaes",
-	"license": "ISC",
+	"license": "BSD-3-Clause",
 	"dependencies": {
 		"electron": "^1.8.1"
 	}
