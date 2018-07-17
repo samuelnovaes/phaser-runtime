@@ -6,7 +6,7 @@
   "bin": {
     "phaser": "run.js"
   },
-  "repository": "https://github.com/artokun/phaser-runtime.git",
+  "repository": "https://github.com/samuelnovaes/phaser-runtime.git",
   "keywords": [
     "Phaser",
     "game",
