@@ -1,14 +1,12 @@
-let {app, BrowserWindow} = require('electron')
-let path = require('path')
-let url = require('url')
-let config = JSON.parse(process.argv[3])
+const { app, BrowserWindow } = require('electron')
+const path = require('path')
+const url = require('url')
+const config = JSON.parse(process.argv[3])
 
-if(config)
-config.backgroundColor = config.backgroundColor || '#000000'
+if (config) config.backgroundColor = config.backgroundColor || '#000000'
 
-function createWindow () {
+function createWindow() {
 	win = new BrowserWindow(config)
-	win.setMenu(null)
 	win.loadURL(url.format({
 		pathname: path.join(__dirname, 'index.html'),
 		protocol: 'file:',

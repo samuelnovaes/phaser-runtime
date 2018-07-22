@@ -1,57 +1,32 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
 
-	*{
-		margin: 0;
-		padding: 0;
-	}
-	body{
-		overflow: hidden;
-		background-color: #000;
-	}
-	#game{
-		position: absolute;
-		top: 50vh;
-		left: 50vw;
-		transform: translate(-50%, -50%);
-	}
-
+		body {
+			overflow: hidden;
+			background-color: #000;
+		}
 	</style>
 </head>
+
 <body>
 	<div id="game"></div>
 	<script type="text/javascript" src="phaser.min.js"></script>
 	<script type="text/javascript">
-
-	function Game(renderer, state, transparent, antialias, physicsConfig){
-		return new Phaser.Game(innerWidth, innerHeight, renderer, "game", state, transparent, antialias, physicsConfig)
-	}
-
-	(function(){
-
-		let remote = require('electron').remote
-		let path = require('path')
-		let browser = remote.getCurrentWindow()
-
-		process.chdir(remote.process.argv[2])
-
-		window.onkeyup = (e)=>{
-			switch(e.key){
-				case "F12":
-				browser.openDevTools()
-				break
-				case "F5":
-				location.reload()
-				break
-			}
-		}
-
-		require(path.join(remote.process.argv[2], "index.js"))
-	})()
-
+		(function () {
+			const remote = require('electron').remote
+			const path = require('path')
+			process.chdir(remote.process.argv[2])
+			require(path.join(remote.process.argv[2], "index.js"))
+		})()
 	</script>
 </body>
+
 </html>
