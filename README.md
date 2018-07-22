@@ -19,7 +19,7 @@ phaser
 
 # Game structure
 
-The project must be a directory that contains an `index.js` file with Phaser code and a `package.json` file with the window configuration according to the Electron [BrowserWindow](https://electron.atom.io/docs/api/browser-window/) documentation.
+The project must be a directory that contains an `index.js` file with Phaser code and a `package.json` file with the `window` configuration according to the Electron [BrowserWindow](https://electron.atom.io/docs/api/browser-window/) documentation.
 
 # importing modules
 
@@ -90,4 +90,4 @@ function create() {
 
 To run the game, enter `phaser` inside the "myGame" directory.
 And you will see it
-![Example image](https://lh3.googleusercontent.com/u/0/d/0B4u0L5wy_IY8Q1NDd204NVVHUVE=s1600-k-iv1)
+![Example image](https://raw.githubusercontent.com/samuelnovaes/phaser-runtime/master/screenshot.png)
