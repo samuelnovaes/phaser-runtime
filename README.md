@@ -21,7 +21,7 @@ phaser
 
 The project must be a directory that contains an `index.js` file with Phaser code and a `package.json` file with the `window` configuration according to the Electron [BrowserWindow](https://electron.atom.io/docs/api/browser-window/) documentation.
 
-# importing modules
+# Importing modules
 
 You can import modules using the `require` function.
 
