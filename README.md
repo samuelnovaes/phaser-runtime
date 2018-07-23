@@ -19,14 +19,15 @@ phaser
 
 # Game structure
 
-The project must be a directory that contains an `index.js` file with Phaser code and a `package.json` file with the `window` configuration according to the Electron [BrowserWindow](https://electron.atom.io/docs/api/browser-window/) documentation.
+The project must be a directory that contains a `package.json` file with the `window` configuration according to the Electron [BrowserWindow](https://electron.atom.io/docs/api/browser-window) documentation and the main script file with Phaser code.
 
 # Importing modules
 
 You can import modules using the `require` function.
 
 ```javascript
-var fs = require('fs');
+require("foo.js")
+const fs = require('fs')
 ```
 
 # loading local assets
@@ -36,6 +37,19 @@ You must have to use `__dirname` to refers to the game directory
 ```javascript
 this.load.spritesheet('diamonds', __dirname + '/sprites/diamonds32x24x5.png', { frameWidth: 32, frameHeight: 24 });
 ```
+
+# Browser object
+
+The ```browser``` object refers to the current Electron BrowserWindow object. It's equivalent to ```require("electron").remote.getCurrentWindow();```
+
+```javascript
+browser.setTitle("Foo") //Set the window title
+browser.serSize(640, 480) //Resize the window
+browser.setResizable(true) //Set the window resizable
+browser.setMaximizable(true) //Set the window maximizable
+browser.center() //Center the window on scree
+```
+[See all methods here](http://electron.atom.io/docs/api/browser-window/)
 
 # Game example
 
@@ -56,6 +70,7 @@ myGame
 	"name": "demo",
 	"version": "1.0.0",
 	"description": "Phaser Runtime Demo",
+	"main": "index.js",
 	"license": "ISC",
 	"window": {
 		"width": 800,
@@ -68,21 +83,21 @@ myGame
 ### myGame/index.js
 
 ```javascript
-var config = {
+const config = {
 	type: Phaser.AUTO,
 	scene: {
 		create: create
 	}
-};
+}
 //It's not necessary to set width, height and parent
 
-var game = new Phaser.Game(config);
+const game = new Phaser.Game(config)
 
 function create() {
-	var circle = new Phaser.Geom.Circle(400, 300, 100);
+	var circle = new Phaser.Geom.Circle(400, 300, 100)
 
-	var graphics = this.add.graphics({ fillStyle: { color: 0xff0000 } });
-	graphics.fillCircleShape(circle);
+	var graphics = this.add.graphics({ fillStyle: { color: 0xff0000 } })
+	graphics.fillCircleShape(circle)
 }
 ```
 

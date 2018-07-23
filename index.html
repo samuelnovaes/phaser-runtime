@@ -20,11 +20,12 @@
 	<div id="game"></div>
 	<script type="text/javascript" src="phaser.min.js"></script>
 	<script type="text/javascript">
+		const browser = require("electron").remote.getCurrentWindow();
 		(function () {
 			const remote = require('electron').remote
 			const path = require('path')
 			process.chdir(remote.process.argv[2])
-			require(path.join(remote.process.argv[2], "index.js"))
+			require(path.join(remote.process.argv[2], remote.process.argv[4]))
 		})()
 	</script>
 </body>

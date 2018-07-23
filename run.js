@@ -3,7 +3,6 @@ const cp = require("child_process")
 const path = require('path')
 const fs = require('fs')
 const configFile = path.join(process.cwd(), "package.json")
-const file = path.join(process.cwd(), "index.js")
 
 fs.readFile(configFile, 'utf-8', (err, pkg) => {
 	if (err) {
@@ -16,6 +15,7 @@ fs.readFile(configFile, 'utf-8', (err, pkg) => {
 	}
 
 	const config = JSON.parse(pkg)
+	const file = path.join(process.cwd(), config.main)
 	config.window = config.window || {}
 
 	fs.open(file, 'r', (err, fd) => {
@@ -30,7 +30,7 @@ fs.readFile(configFile, 'utf-8', (err, pkg) => {
 
 		process.env.ELECTRON_ENABLE_LOGGING = true
 
-		const proc = cp.spawn(path.join(__dirname, "node_modules", ".bin", /^win/.test(process.platform) ? "electron.cmd" : "electron"), [__dirname, process.cwd(), JSON.stringify(config.window)])
+		const proc = cp.spawn(path.join(__dirname, "node_modules", ".bin", /^win/.test(process.platform) ? "electron.cmd" : "electron"), [__dirname, process.cwd(), JSON.stringify(config.window), config.main])
 
 		proc.stdout.on('data', (data) => {
 			console.log(data.toString("utf-8"))
