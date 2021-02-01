@@ -6,12 +6,20 @@ const config = JSON.parse(process.argv[3])
 if (config) config.backgroundColor = config.backgroundColor || '#000000'
 
 function createWindow() {
-	win = new BrowserWindow(config)
+	win = new BrowserWindow({
+		...config,
+		webPreferences: {
+			nodeIntegration: true,
+			contextIsolation: false
+		}
+	})
+
 	win.loadURL(url.format({
 		pathname: path.join(__dirname, 'index.html'),
 		protocol: 'file:',
 		slashes: true
 	}))
+	
 	win.on('closed', function () {
 		win = null
 	})
