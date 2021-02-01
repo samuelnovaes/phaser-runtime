@@ -17,6 +17,6 @@
   "author": "Samuel Novaes",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "electron": "^2.0.5"
+    "electron": "^11.2.1"
   }
 }
