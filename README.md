@@ -10,6 +10,8 @@ Phaser runtime is an application to run Phaser 3 games on desktop. Phase Runtime
 [sudo] npm install -g phaser-runtime
 ```
 
+> You may have to use the `--unsafe-perm` flag on Linux.
+
 # Usage
 
 ```bash

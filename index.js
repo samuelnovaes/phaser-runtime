@@ -10,7 +10,8 @@ function createWindow() {
 		...config,
 		webPreferences: {
 			nodeIntegration: true,
-			contextIsolation: false
+			contextIsolation: false,
+			enableRemoteModule: true
 		}
 	})
 
